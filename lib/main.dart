@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petapp/screens/Adopt/adoptscreen2.dart';
-import 'package:petapp/screens/Adopt/splashscreen.dart';
-import 'package:petapp/screens/Grooming/grooming1.dart';
 import 'package:petapp/screens/home.dart';
-import 'package:petapp/screens/petdetails.dart';
-import 'package:petapp/screens/splash.screen.dart';
-import 'package:petapp/screens/training.dart';
+import 'package:petapp/screens/products.dart/petcare.products.dart';
+import 'package:petapp/screens/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:Petdetails()
+      home:Petcareproducts()
     );
   }
 }

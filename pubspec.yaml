@@ -78,6 +78,16 @@ flutter:
     - asset/image (1).png
     - asset/Rectangle 102.png
     - asset/Rectangle 103.png
+    - asset/service.jfif
+    - asset/doctor.jfif
+    - asset/adopt.jfif
+    - asset/products.jfif
+    - asset/grooming.jfif
+    - asset/train.jfif
+    - asset/Rectangle 22.png
+    - asset/Rectangle 23.png
+    - asset/Rectangle 32.png
+    - asset/Frame.png
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

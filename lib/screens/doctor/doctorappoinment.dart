@@ -55,8 +55,10 @@ class Doctorappoinment extends StatelessWidget {
                 
                 ),
               ),SizedBox(height: 35,),
-              ElevatedButton(onPressed: (){},
-              style: ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 244, 112, 60)), child: Text("Book Now",style:TextStyle(color: Colors.white,) ,))
+              ElevatedButton(onPressed: (){
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Processing")));
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 244, 112, 60)), child: Text("conform Appoinment",style:TextStyle(color: Colors.white,) ,))
               
             ],),
           ),

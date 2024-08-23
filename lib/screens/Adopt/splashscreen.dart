@@ -16,7 +16,7 @@ class Adoptsplashscreen extends StatelessWidget {
                 Text("Adopt A Pet Today",style: TextStyle(color: Colors.white,fontSize: 20),),
                 SizedBox(height: 50,),
                 Column(children: [
-                  CircleAvatar(radius: 200,)
+                  CircleAvatar(radius: 150,backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpzjhrED_Oqn38TpKv03sHyPbOsav8gNsUoA&s"),)
                 ],)
                ],
           ),

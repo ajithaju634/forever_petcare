@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petapp/screens/petdetails.dart';
 
 class Grooming1 extends StatelessWidget {
   const Grooming1({super.key});
@@ -62,7 +63,7 @@ class Grooming1 extends StatelessWidget {
              ),
              ElevatedButton(style:ElevatedButton.styleFrom(backgroundColor: Colors.green) ,
               onPressed:(){
-                
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
               }, child: Text("BOOK NOW",style: TextStyle(color: Colors.white),))
           ],
         ),
