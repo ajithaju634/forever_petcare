@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
        Icons.home ),label: "Home",backgroundColor: Colors.grey),
        BottomNavigationBarItem(icon: Icon(Icons.calendar_month_sharp),label: "Appoinments",backgroundColor: Colors.grey),
        BottomNavigationBarItem(icon: Icon(Icons.feedback),label: "feedback"),
-       BottomNavigationBarItem(icon: Icon(Icons.feedback),label: "feedback")],
+       BottomNavigationBarItem(icon: Icon(Icons.person_outline_rounded),label: "Profile")],
        currentIndex: indexNum,
        onTap: (int index) {
         setState(() {

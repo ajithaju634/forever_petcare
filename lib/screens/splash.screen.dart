@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:petapp/screens/widget/bottomnav1.dart';
+import 'package:petapp/screens/home.dart';
 
 class Splashscreen extends StatefulWidget {
    Splashscreen({super.key});
@@ -14,9 +14,9 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   
   Widget build(BuildContext context) {
-    initState(){
+  void  initState(){
       super.initState();
-      Timer(Duration(seconds: 3), ()=>Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Homescreen())));
+      Timer(Duration(seconds: 3), ()=>Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>Home())));
     }
     
     return Scaffold(backgroundColor: Colors.white,

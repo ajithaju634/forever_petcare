@@ -3,122 +3,68 @@ import 'package:petapp/screens/Grooming/grooming1.dart';
 import 'package:petapp/screens/petdetails.dart';
 
 class Services extends StatelessWidget {
-  const Services({super.key});
+   Services({super.key});
 
   @override
   Widget build(BuildContext context) {
     
     return Scaffold(backgroundColor:Color.fromARGB(48, 177, 170, 170) ,
+    appBar: AppBar(title: Text("",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
+    backgroundColor:Color.fromARGB(46, 244, 241, 241) ,
+    ),
       body: SingleChildScrollView(
         child: Center(
-          child: Column(
-            children: [SizedBox(height: 40,),
-              Text("Services",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
-              SizedBox(height: 20,),
-               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                 children: [
-                   Column(crossAxisAlignment: CrossAxisAlignment.center,
-                     children: [
-                       InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Grooming1()));
-                       },
-                         child: Container(width: 171,height: 171,
-                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(90),color: Colors.black,
-                         image: DecorationImage(image: ExactAssetImage("asset/grooming.jfif",),fit: BoxFit.fill)),
-                         
-                         ),
-                       ),
-                       Text("Grooming",style: TextStyle(fontWeight: FontWeight.bold),)
-                     ],
-                   ),
-                   Column(crossAxisAlignment: CrossAxisAlignment.center,
-                     children: [
-                       InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
-                       },
-                         child: Container(width: 171,height: 171,
-                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(90),color: Colors.black,
-                         image: DecorationImage(image: ExactAssetImage("asset/train.jfif",),fit: BoxFit.fill)),
-                         
-                         ),
-                       ),
-                     Text("Trainig",style: TextStyle(fontWeight: FontWeight.bold),)
-                     ],
-                   ),
-                   
+          child: Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: Column(children: [
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
+              },
+                child: Container(height: 60,width: 250,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Colors.white),
+                child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                  children: [SizedBox(width: 20,),
+                    CircleAvatar(backgroundImage: AssetImage("asset/Rectangle 22.png"),),Text("   Vaccination")],),),
+              ),
+              SizedBox(height: 30,),
                
-                 ],
+               TextButton(onPressed: () {
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
+               },
+                 child: Container(height: 60,width: 250,
+                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Colors.white),
+                            child: Row(children: [
+                             SizedBox(width: 20,),
+                    CircleAvatar(backgroundImage: AssetImage("asset/train.jfif"),),Text("   Trainig")
+                            ],), ),
                ),
-               SizedBox(height: 20,),
-               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                 children: [
-                   Column(crossAxisAlignment: CrossAxisAlignment.center,
-                     children: [
-                       InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
-                       },
-                         child: Container(width: 171,height: 171,
-                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(90),color: Colors.black,
-                         image: DecorationImage(image: ExactAssetImage("asset/Rectangle 23.png",),fit: BoxFit.fill)),
-                         
-                         ),
-                       ),
-                       Text("          Dentistry & \nTeeth Cleanings pets",style: TextStyle(fontWeight: FontWeight.bold),)
-                     ],
-                   ),
-                   Column(crossAxisAlignment: CrossAxisAlignment.center,
-                     children: [
-                       InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
-                       },
-                         child: Container(width: 171,height: 171,
-                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(90),color: Colors.black,
-                         image: DecorationImage(image: ExactAssetImage("asset/Rectangle 22.png",),fit: BoxFit.fill)),
-                         
-                         ),
-                       ),
-                     Text("Vaccinations",style: TextStyle(fontWeight: FontWeight.bold),)
-                     ],
-                   ),
-                   
-               
-                 ],
-               ),SizedBox(height: 20,),
-               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                 children: [
-                   Column(crossAxisAlignment: CrossAxisAlignment.center,
-                     children: [
-                       InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
-                       },
-                         child: Container(width: 171,height: 171,
-                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(90),color: Colors.black,
-                         image: DecorationImage(image: ExactAssetImage("asset/Rectangle 32.png",),fit: BoxFit.fill)),
-                         
-                         ),
-                       ),
-                       Text("Urgent Care & Emergencies",style: TextStyle(fontWeight: FontWeight.bold),)
-                     ],
-                   ),
-                   Column(crossAxisAlignment: CrossAxisAlignment.center,
-                     children: [
-                       InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Grooming1()));
-                       },
-                         child: Container(width: 171,height: 171,
-                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(90),color: Colors.black,
-                         image: DecorationImage(image: ExactAssetImage("",),fit: BoxFit.fill)),
-                         
-                         ),
-                       ),
-                     Text("",style: TextStyle(fontWeight: FontWeight.bold),)
-                     ],
-                   ),
-                   
-               
-                 ],
-               )
-              ],
+            
+              SizedBox(height: 30,),
+            
+               TextButton(onPressed: () {
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Grooming1()));
+               },
+                 child: Container(height: 60,width: 250,
+                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Colors.white),
+                             child: Row(children: [
+                  SizedBox(width: 20,),
+                    CircleAvatar(backgroundImage: AssetImage("asset/grooming.jfif"),),Text("   Grooming")
+                             ],),),
+               ),
+              SizedBox(height: 30,),
+            
+              TextButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
+              },
+                child: Container(height: 60,width: 250,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Colors.white),
+                child: Row(children: [
+                  SizedBox(width: 20,),
+                    CircleAvatar(backgroundImage: AssetImage("asset/Rectangle 23.png"),),Text("   Dentisty & teeth cleaning ")
+                ],),),
+              ),
+              SizedBox(height: 30,)
+            ],),
           ),
         ),
       ),

@@ -6,29 +6,47 @@ class Adoptscreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Color.fromARGB(48, 177, 170, 170),
+    
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
+              
               Padding(
                 padding: const EdgeInsets.only(top:50,left: 60),
                 child: Row(
                   children: [
-                    Container(height: 45,width: 80, 
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color.fromARGB(185, 94, 193, 196)),
-                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("Dog",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)],),),SizedBox(width: 20,),
-                    Container(height: 45,width: 80,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color.fromARGB(185, 94, 193, 196)),
-                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("Cat",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)],),
+                    InkWell(onTap: () {
+                      
+                    },
+                      child: Container(height: 45,width: 80, 
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color.fromARGB(185, 94, 193, 196)),
+                      child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [Text("Dog",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)],),),
                     ),SizedBox(width: 20,),
-                    Container(height: 45,width: 80,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color.fromARGB(185, 94, 193, 196)),
-                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("Bird",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)],),),SizedBox(width: 20,),
-                    Container(height: 45,width: 80,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color.fromARGB(185, 94, 193, 196)),
-                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("Other",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)],), ),SizedBox(width: 15,),
+                    InkWell(onTap: () {
+                      
+                    },
+                      child: Container(height: 45,width: 80,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color.fromARGB(185, 94, 193, 196)),
+                      child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [Text("Cat",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)],),
+                      ),
+                    ),SizedBox(width: 20,),
+                    InkWell(onTap: () {
+                      
+                    },
+                      child: Container(height: 45,width: 80,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color.fromARGB(185, 94, 193, 196)),
+                      child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [Text("Bird",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)],),),
+                    ),SizedBox(width: 20,),
+                    InkWell(onTap: () {
+                      
+                    },
+                      child: Container(height: 45,width: 80,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color.fromARGB(185, 94, 193, 196)),
+                      child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [Text("Other",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)],), ),
+                    ),SizedBox(width: 15,),
                   ],
                 ),
               ),SizedBox(height: 60,),
