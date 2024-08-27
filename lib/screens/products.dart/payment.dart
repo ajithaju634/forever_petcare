@@ -7,7 +7,10 @@ class Paymentpage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        
+        children: [
+          Text("Oder Summary"),
+          
+        ],
       ),
     );
   }

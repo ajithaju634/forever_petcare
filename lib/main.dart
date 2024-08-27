@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petapp/screens/Adopt/adoptscreen2.dart';
-import 'package:petapp/screens/doctor/doctorappoinment.dart';
-import 'package:petapp/screens/feedback2.dart';
-import 'package:petapp/screens/home.dart';
 import 'package:petapp/screens/loginpage.dart';
 import 'package:petapp/screens/products.dart/payment.dart';
-import 'package:petapp/screens/splash.screen.dart';
-import 'package:petapp/screens/widget/bottomnav2.dart';
-import 'package:petapp/screens/widget/bottomnav3.dart';
+import 'package:petapp/screens/products.dart/petcare.products.dart';
 
 void main() {
   runApp(const MyApp());

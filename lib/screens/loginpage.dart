@@ -55,6 +55,9 @@ class _LoginpageState extends State<Loginpage> {
                   if(value==null||value.isEmpty){
                     return"please enter email";
                   }
+                   if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                    return 'Please enter a valid email address';
+                  }
                  return null;
                   
                     
@@ -120,7 +123,9 @@ class _LoginpageState extends State<Loginpage> {
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [Text("Alredy have an account?"),
                     TextButton(onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Signinpage()));
+                    if(formkey.currentState!.validate()){
+                     
+                    }
                   },
                     child: Text("Sign in"))],),
               )

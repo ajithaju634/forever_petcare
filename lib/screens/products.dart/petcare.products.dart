@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:petapp/screens/products.dart/payment.dart';
 
 class Petcareproducts extends StatelessWidget {
   const Petcareproducts({super.key});
@@ -15,15 +15,30 @@ class Petcareproducts extends StatelessWidget {
         height: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 2,mainAxisSpacing: 10,crossAxisSpacing: 5)
+          child: GridView.builder(itemCount: 10,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,childAspectRatio: 2,mainAxisSpacing: 1,crossAxisSpacing: 5)
           , itemBuilder: (context,indext){
-            return Column(
-              children: [
-                Container(height: 50,width: 100,
-                decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage("asset/Frame.png"))),),
-                Text(""),Text("")
-              ],
+            return InkWell(onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Paymentpage()));
+            },
+              child: Column(
+                children: [
+                  Container(height: 50,width: 200,
+                  decoration: BoxDecoration(image: DecorationImage(image: ExactAssetImage("asset/Frame.png"))),),
+                  Text("Rubber Ball "),SizedBox(width: 75,
+                    child: Row(
+                                     
+                      children: [
+                      Text("4.1",style: TextStyle(fontSize: 12),),Icon(Icons.star_purple500_outlined,size: 15,color: Colors.grey,)
+                    ],),
+                  ),
+                  
+                  
+                ],
+              ),
             );
+           
           }),
         ),
             )
