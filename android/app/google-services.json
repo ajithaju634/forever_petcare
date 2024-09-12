@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "787255316219",
+    "project_id": "forever-pet-care",
+    "storage_bucket": "forever-pet-care.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787255316219:android:2f8af6e808f63fe5d8ea5e",
+        "android_client_info": {
+          "package_name": "com.example.petapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-RvC7k7-KmAEjIJ7YqsdfBPPcO7GmYQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

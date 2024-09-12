@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petapp/screens/Adopt/adoptscreen2.dart';
 import 'package:petapp/screens/Adopt/splashscreen.dart';
 import 'package:petapp/screens/doctor/doctorappoinment.dart';
 import 'package:petapp/screens/products.dart/petcare.products.dart';
@@ -69,7 +70,7 @@ class _HomescreenState extends State<Homescreen> {
                   ),
                   Text("",style: TextStyle(fontWeight: FontWeight.bold),),SizedBox(width: 30,),
                   InkWell(onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Adoptsplashscreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Adoptscreen3()));
                   },
                     child: Stack(
                       children: [

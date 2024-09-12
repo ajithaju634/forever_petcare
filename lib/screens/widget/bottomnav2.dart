@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Feedbackscreen extends StatefulWidget {
@@ -8,6 +9,9 @@ class Feedbackscreen extends StatefulWidget {
 }
 
 class _FeedbackscreenState extends State<Feedbackscreen> {
+  CollectionReference Appoinment=FirebaseFirestore.instance.collection('appoinment');
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
