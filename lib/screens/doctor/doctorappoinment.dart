@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
+import 'package:petapp/screens/widget/bottomnav2.dart';
 import 'package:petapp/screens/widget/bottomnav3.dart';
 
 class Doctorappoinment extends StatefulWidget {
@@ -234,7 +235,17 @@ class _DoctorappoinmentState extends State<Doctorappoinment> {
                       style: TextStyle(
                         color: Colors.white,
                       ),
-                    ))
+                    )),
+                    ElevatedButton(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Feedbackscreen()),
+    );
+  },
+  child: Text("View Appointments"),
+),
+
               ],
             ),
           ),
