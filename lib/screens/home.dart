@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
     Homescreen(),
     Feedbackscreen(),
     Appoiments(),
-    Profilecreen()
+    ProfileScreen()
     
 
   ];
