@@ -1,104 +1,8 @@
-// import 'package:flutter/material.dart';
-
-// class Profilecreen extends StatefulWidget {
-//   const Profilecreen({super.key});
-
-//   @override
-//   State<Profilecreen> createState() => _ProfilecreenState();
-// }
-
-// class _ProfilecreenState extends State<Profilecreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(backgroundColor: Color.fromARGB(48, 177, 170, 170) ,
-//       appBar: AppBar(backgroundColor: Color.fromARGB(48, 177, 170, 170) ,
-//         title: Text('Profile'),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(16.0),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             // Profile Picture
-//             Center(
-//               child: Stack(
-//                 children: [
-//                   CircleAvatar(
-//                     radius: 60,
-//                     backgroundImage: NetworkImage(''),
-//                   ),
-//                   Positioned(
-//                     bottom: 0,
-//                     right: 0,
-//                     child: IconButton(
-//                       icon: Icon(Icons.camera_alt),
-//                       onPressed: () {
-//                         // Handle camera action
-//                       },
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//             SizedBox(height: 16),
-//             // User Information
-//             Text(
-//               'John Doe',
-//               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-//             ),
-//             SizedBox(height: 8),
-//             Text(
-//               'johndoe@example.com',
-//               style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-//             ),
-//             SizedBox(height: 16),
-//             // Pet List
-//             Text(
-//               'My Pets',
-//               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//             ),
-//             SizedBox(height: 8),
-//             Expanded(
-//               child: ListView(
-//                 children: [
-//                   PetCard(petName: 'Buddy', petType: 'Dog', petImage: 'asset/Rectangle 21.png'),
-//                   // PetCard(petName: 'Whiskers', petType: 'Cat', petImage: 'assets/cat.png'),
-//                   // Add more pets here
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class PetCard extends StatelessWidget {
-//   final String petName;
-//   final String petType;
-//   final String petImage;
-
-//   PetCard({
-//     required this.petName,
-//     required this.petType,
-//     required this.petImage,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       margin: EdgeInsets.symmetric(vertical: 8),
-//       child: ListTile(
-//         leading: Image.asset(petImage, width: 50, height: 50),
-//         title: Text(petName),
-//         subtitle: Text(petType),
-//       ),
-//     );
-//   }
-// }
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -108,80 +12,93 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  User? user;
+  String userName = '';
+  String userEmail = '';
+  File? profileImage;
+
+  final ImagePicker _picker = ImagePicker();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   void initState() {
     super.initState();
-    getCurrentUser();
+    _fetchUserProfile();
   }
 
-  void getCurrentUser() {
-    setState(() {
-      user = FirebaseAuth.instance.currentUser;
-    });
+  Future<void> _fetchUserProfile() async {
+    User? user = _auth.currentUser;
+
+    if (user != null) {
+      setState(() {
+        userName = user.displayName ?? 'No Name';
+        userEmail = user.email ?? 'No Email';
+      });
+
+      // Fetch additional user data from Firestore
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(user.uid).get();
+      if (userDoc.exists) {
+        setState(() {
+          userName = userDoc['name'] ?? userName;
+          userEmail = userDoc['email'] ?? userEmail;
+          // Fetch other fields if necessary
+        });
+      }
+    }
+  }
+
+  Future<void> _pickImage() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        profileImage = File(pickedFile.path);
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(48, 177, 170, 170),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(48, 177, 170, 170),
-        title: Text('Profile'),
+        title: const Text('Profile'),
+        backgroundColor: Color.fromARGB(255, 85, 176, 92),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Profile Picture
             Center(
               child: Stack(
                 children: [
                   CircleAvatar(
                     radius: 60,
-                    backgroundImage: NetworkImage(user?.photoURL ?? 'https://example.com/default.png'), // Use user's photo URL or a default
+                    backgroundImage: profileImage != null
+                        ? FileImage(profileImage!)
+                        : const AssetImage('assets/default_profile.png'),
                   ),
                   Positioned(
                     bottom: 0,
                     right: 0,
                     child: IconButton(
-                      icon: Icon(Icons.camera_alt),
-                      onPressed: () {
-                        // Handle camera action (e.g., use image_picker)
-                      },
+                      icon: const Icon(Icons.camera_alt),
+                      onPressed: _pickImage,
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 16),
-            // User Information
+            const SizedBox(height: 16),
             Text(
-              user?.displayName ?? 'User Name',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              userName,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
-              user?.email ?? 'user@example.com',
-              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+              userEmail,
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            SizedBox(height: 16),
-            // Pet List
-            Text(
-              'My Pets',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Expanded(
-              child: ListView(
-                children: [
-                  PetCard(petName: 'Buddy', petType: 'Dog', petImage: 'assets/Rectangle 21.png'),
-                  // Add more pets here
-                ],
-              ),
-            ),
+            // Add other UI elements here...
           ],
         ),
       ),
@@ -189,26 +106,153 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-class PetCard extends StatelessWidget {
-  final String petName;
-  final String petType;
-  final String petImage;
+// import 'package:flutter/material.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'dart:io';
 
-  PetCard({
-    required this.petName,
-    required this.petType,
-    required this.petImage,
-  });
+// void main() {
+//   runApp(ProfileCreateApp());
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
-      child: ListTile(
-        leading: Image.asset(petImage, width: 50, height: 50),
-        title: Text(petName),
-        subtitle: Text(petType),
-      ),
-    );
-  }
-}
+// class ProfileCreateApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Profile Create UI',
+//       theme: ThemeData(primarySwatch: Colors.blue),
+//       home: ProfileCreateScreen(),
+//     );
+//   }
+// }
+
+// class ProfileCreateScreen extends StatefulWidget {
+//   @override
+//   _ProfileCreateScreenState createState() => _ProfileCreateScreenState();
+// }
+
+// class _ProfileCreateScreenState extends State<ProfileCreateScreen> {
+//   final _formKey = GlobalKey<FormState>();
+//   String _name = '';
+//   String _email = '';
+//   File? _image;
+
+//   Future<void> _pickImage() async {
+//     final picker = ImagePicker();
+//     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+//     if (pickedFile != null) {
+//       setState(() {
+//         _image = File(pickedFile.path);
+//       });
+//     }
+//   }
+
+//   void _submit() {
+//     if (_formKey.currentState!.validate()) {
+//       // Navigate to the Profile Screen
+//       Navigator.push(
+//         context,
+//         MaterialPageRoute(
+//           builder: (context) => UserProfileScreen(name: _name, email: _email, image: _image),
+//         ),
+//       );
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Create Profile')),
+//       body: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Form(
+//           key: _formKey,
+//           child: Column(
+//             children: [
+//               GestureDetector(
+//                 onTap: _pickImage,
+//                 child: CircleAvatar(
+//                   radius: 50,
+//                   backgroundColor: Colors.grey[200],
+//                   backgroundImage: _image != null ? FileImage(_image!) : null,
+//                   child: _image == null
+//                       ? Icon(Icons.camera_alt, size: 50, color: Colors.grey)
+//                       : null,
+//                 ),
+//               ),
+//               SizedBox(height: 20),
+//               TextFormField(
+//                 decoration: InputDecoration(labelText: 'Name'),
+//                 validator: (value) {
+//                   if (value == null || value.isEmpty) {
+//                     return 'Please enter your name';
+//                   }
+//                   return null;
+//                 },
+//                 onChanged: (value) {
+//                   setState(() {
+//                     _name = value;
+//                   });
+//                 },
+//               ),
+//               SizedBox(height: 20),
+//               TextFormField(
+//                 decoration: InputDecoration(labelText: 'Email'),
+//                 validator: (value) {
+//                   if (value == null || value.isEmpty || !value.contains('@')) {
+//                     return 'Please enter a valid email';
+//                   }
+//                   return null;
+//                 },
+//                 onChanged: (value) {
+//                   setState(() {
+//                     _email = value;
+//                   });
+//                 },
+//               ),
+//               SizedBox(height: 20),
+//               ElevatedButton(
+//                 onPressed: _submit,
+//                 child: Text('Submit'),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class UserProfileScreen extends StatelessWidget {
+//   final String name;
+//   final String email;
+//   final File? image;
+
+//   UserProfileScreen({required this.name, required this.email, this.image});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('User Profile')),
+//       body: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             CircleAvatar(
+//               radius: 50,
+//               backgroundColor: Colors.grey[200],
+//               backgroundImage: image != null ? FileImage(image!) : null,
+//               child: image == null
+//                   ? Icon(Icons.person, size: 50, color: Colors.grey)
+//                   : null,
+//             ),
+//             SizedBox(height: 20),
+//             Text('Name: $name', style: TextStyle(fontSize: 24)),
+//             SizedBox(height: 10),
+//             Text('Email: $email', style: TextStyle(fontSize: 18)),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

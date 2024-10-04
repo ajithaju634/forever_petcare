@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
   int indexNum=0;
   List<Widget>tabwidgets=[
     Homescreen(),
-    Feedbackscreen(),
+    AppointmentsAndPetDetailsScreen(),
     Appoiments(),
     ProfileScreen()
     

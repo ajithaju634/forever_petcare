@@ -18,7 +18,7 @@ class Services extends StatelessWidget {
             padding: const EdgeInsets.only(top: 100),
             child: Column(children: [
               InkWell(onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>PetDetails()));
               },
                 child: Container(height: 60,width: 250,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Colors.white),
@@ -29,7 +29,7 @@ class Services extends StatelessWidget {
               SizedBox(height: 30,),
                
                TextButton(onPressed: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=>PetDetails()));
                },
                  child: Container(height: 60,width: 250,
                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Colors.white),
@@ -54,7 +54,7 @@ class Services extends StatelessWidget {
               SizedBox(height: 30,),
             
               TextButton(onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>PetDetails()));
               },
                 child: Container(height: 60,width: 250,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Colors.white),

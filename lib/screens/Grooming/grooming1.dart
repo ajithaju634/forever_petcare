@@ -63,7 +63,7 @@ class Grooming1 extends StatelessWidget {
              ),
              ElevatedButton(style:ElevatedButton.styleFrom(backgroundColor: Colors.green) ,
               onPressed:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Petdetails()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>PetDetails()));
               }, child: Text("BOOK NOW",style: TextStyle(color: Colors.white),))
           ],
         ),

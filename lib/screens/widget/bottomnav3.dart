@@ -11,9 +11,9 @@ class Appoiments extends StatefulWidget {
 class _AppoimentsState extends State<Appoiments> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Color.fromARGB(48, 177, 170, 170)  ,
+    return Scaffold(backgroundColor: Colors.white  ,
       appBar: AppBar(title: Text("Feedback"),
-      backgroundColor: Color.fromARGB(48, 177, 170, 170) , ),
+      backgroundColor: Color.fromARGB(255, 85, 176, 92), ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 150),

@@ -268,6 +268,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:petapp/screens/dispalydemo.dart';
 import 'package:petapp/screens/widget/bottomnav2.dart';
 // import 'package:petapp/screens/feedback_screen.dart'; // Update the import path accordingly
 
@@ -354,16 +355,7 @@ class _DoctorappoinmentState extends State<Doctorappoinment> {
               ),
             ),
             SizedBox(height: 20),
-            SizedBox(
-              width: 350,
-              child: TextFormField(
-                controller: emailController,
-                decoration: InputDecoration(
-                  labelText: "Enter Email",
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
-                ),
-              ),
-            ),
+            
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
@@ -430,15 +422,7 @@ class _DoctorappoinmentState extends State<Doctorappoinment> {
               style: ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 85, 176, 92)),
               child: Text("Confirm Appointment", style: TextStyle(color: Colors.white)),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Feedbackscreen()),
-                );
-              },
-              child: Text("View Appointments"),
-            ),
+           
           ],
         ),
       ),
