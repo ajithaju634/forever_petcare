@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:petapp/screens/Adopt/adoptscreen2.dart';
-import 'package:petapp/screens/Adopt/splashscreen.dart';
+import 'package:petapp/screens/Adopt/selectpet.dart';
 import 'package:petapp/screens/doctor/doctorappoinment.dart';
 import 'package:petapp/screens/products.dart/petcare.products.dart';
 import 'package:petapp/screens/services.dart';
@@ -57,7 +56,7 @@ class _HomescreenState extends State<Homescreen> {
                   },
                     child: Stack(
                       children: [Container(width: 352,height: 100,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.black,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.black,
                       image: DecorationImage(image: ExactAssetImage("asset/service.jfif"),fit: BoxFit.fill)),
                        
                       ),
@@ -70,12 +69,12 @@ class _HomescreenState extends State<Homescreen> {
                   ),
                   Text("",style: TextStyle(fontWeight: FontWeight.bold),),SizedBox(width: 30,),
                   InkWell(onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Adoptscreen3()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Selectpet()));
                   },
                     child: Stack(
                       children: [
                         Container(width: 352,height: 100,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(1),
                         image: DecorationImage(image: ExactAssetImage("asset/adopt.jfif",),fit: BoxFit.fill)),
                          
                         ),

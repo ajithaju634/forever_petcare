@@ -119,7 +119,7 @@ class _Feedback2State extends State<Feedback2> {
     return Scaffold(
       backgroundColor: Color.fromARGB(48, 177, 170, 170),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(48, 177, 170, 170),
+        backgroundColor: Color.fromARGB(255, 85, 176, 92),
         title: Text("Feedback"),
         centerTitle: true,
       ),
@@ -161,7 +161,7 @@ class _Feedback2State extends State<Feedback2> {
                 child: ElevatedButton(
                   onPressed: _submitFeedback,
                   style: ElevatedButton.styleFrom(
-                    iconColor: Colors.greenAccent,
+                    backgroundColor:  Colors.greenAccent,
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),

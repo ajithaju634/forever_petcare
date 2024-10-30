@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:petapp/admin/imageup.dart';
+import 'package:petapp/admin/productdetailsadd.dart';
 import 'package:petapp/firebase_options.dart';
 import 'package:petapp/screens/Adopt/selectpet.dart';
 import 'package:petapp/screens/doctor/doctorappoinment.dart';
@@ -10,6 +12,7 @@ import 'package:petapp/screens/products.dart/payment.dart';
 import 'package:petapp/screens/products.dart/petcare.products.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:petapp/screens/signinpage.dart';
+import 'package:petapp/screens/widget/bottomnav1.dart';
 import 'package:petapp/screens/widget/bottomnav3.dart';
 
 
@@ -35,7 +38,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: 
-     Loginpage()
-        );
+     Loginpage());
   }
 }
