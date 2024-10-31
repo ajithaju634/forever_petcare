@@ -130,23 +130,35 @@ class Selectpet extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
-                              child: Row(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    height: 100,
-                                    width: 100,
-                                    decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(pet['image'] ?? ''))),
-                                  ),SizedBox(height: 10,),
-                                  Column(
+                                  Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  
                                     children: [
-                                      Text(
-                                        "Name: ${pet['name']}",
-                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      Container(
+                                        height: 100,
+                                        width: 100,
+                                        
+                                        decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover,image: NetworkImage(pet['image'] ?? ''))),
+                                      ),SizedBox(height: 10,),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 15),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Name: ${pet['name']}",
+                                              style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),
+                                            ),
+                                            Text("Gender: ${pet['Gender']}"),
+                                            Text("Age: ${pet['Age']} years"),
+                                            Text("Coat: ${pet['Coat']}"),
+                                          ],
+                                        ),
                                       ),
-                                      Text("Gender: ${pet['Gender']}"),
-                                      Text("Age: ${pet['Age']} years"),
-                                      Text("Coat: ${pet['Coat']}"),
                                     ],
                                   ),
                                 ],

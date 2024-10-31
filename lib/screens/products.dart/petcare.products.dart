@@ -204,7 +204,7 @@ class Petcareproducts extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 1,
-                mainAxisSpacing: 10,
+                mainAxisSpacing: 1,
                 crossAxisSpacing: 10,
               ),
               itemBuilder: (context, index) {
@@ -234,12 +234,48 @@ class Petcareproducts extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Container(height: 100,width: 100, 
-                  decoration: BoxDecoration(
-                    image: DecorationImage(image: NetworkImage(product.imageUrl.isNotEmpty ? product.imageUrl : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'))
-                  ),
-                  
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 50,bottom: 25),
+                    child: Card(
+                      elevation: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left:16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 8,
                             ),
+                            Container(height: 100,width: 100, 
+                            decoration: BoxDecoration(
+                              image: DecorationImage(image: NetworkImage(product.imageUrl.isNotEmpty ? product.imageUrl : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'))
+                            ),
+                            
+                                      ),
+                                       Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: 150,
+                                  child: Text(
+                                    product.name,
+                                    style: TextStyle(overflow: TextOverflow.visible,fontSize: 14, fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                              
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "\$${price.toStringAsFixed(2)}", // Format price to 2 decimal places
+                                  style: TextStyle(fontSize: 14, color: Colors.green),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                            
                   // child: Card(
                   //   elevation: 5,
                   //   child: Column(
