@@ -8,8 +8,8 @@ class Signinpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formkey=GlobalKey<FormState>();
-    TextEditingController emailcontoler=TextEditingController(text: "Renju@gmail.com");
-    TextEditingController passwordcontole=TextEditingController(text: "987654");
+    TextEditingController emailcontoler=TextEditingController();
+    TextEditingController passwordcontole=TextEditingController();
     
     return Scaffold(
       

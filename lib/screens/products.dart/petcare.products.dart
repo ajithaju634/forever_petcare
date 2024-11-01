@@ -235,7 +235,7 @@ class Petcareproducts extends StatelessWidget {
                     );
                   },
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 50,bottom: 25),
+                    padding: const EdgeInsets.only(right: 50,),
                     child: Card(
                       elevation: 5,
                       child: Padding(
